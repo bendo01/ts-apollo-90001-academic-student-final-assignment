@@ -1,0 +1,25 @@
+type AcademicStudentFinalAssignmentTransactionSubmission {
+    id: ID!
+    created_by: uuid,
+    modified_by: uuid,
+    created_at: DateTime,
+    updated_at: DateTime,
+    deleted_at: DateTime
+}
+
+type AcademicStudentFinalAssignmentTransactionSubmissionPaginate {
+    pagination: AcademicStudentFinalAssignmentPaginate
+    data: [AcademicStudentFinalAssignmentTransactionSubmission],
+}
+
+type Query {
+    academic_student_final_assignment_transaction_submission_paginate(page: Int, per_page: Int, sort: String, order: String, filter: String, search: String): AcademicStudentFinalAssignmentTransactionSubmissionPaginate
+    academic_student_final_assignment_transaction_submission(id: ID!): AcademicStudentFinalAssignmentTransactionSubmission
+}
+
+
+type Mutation {
+    create_academic_student_final_assignment_transaction_submission(data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionSubmission
+    update_academic_student_final_assignment_transaction_submission(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionSubmission
+    delete_academic_student_final_assignment_transaction_submission(id: ID!): AcademicStudentFinalAssignmentTransactionSubmission
+}

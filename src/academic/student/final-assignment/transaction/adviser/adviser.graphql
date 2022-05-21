@@ -1,0 +1,25 @@
+type AcademicStudentFinalAssignmentTransactionAdviser {
+    id: ID!
+    created_by: uuid,
+    modified_by: uuid,
+    created_at: DateTime,
+    updated_at: DateTime,
+    deleted_at: DateTime
+}
+
+type AcademicStudentFinalAssignmentTransactionAdviserPaginate {
+    pagination: AcademicStudentFinalAssignmentPaginate
+    data: [AcademicStudentFinalAssignmentTransactionAdviser],
+}
+
+type Query {
+    academic_student_final_assignment_transaction_adviser_paginate(page: Int, per_page: Int, sort: String, order: String, filter: String, search: String): AcademicStudentFinalAssignmentTransactionAdviserPaginate
+    academic_student_final_assignment_transaction_adviser(id: ID!): AcademicStudentFinalAssignmentTransactionAdviser
+}
+
+
+type Mutation {
+    create_academic_student_final_assignment_transaction_adviser(data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionAdviser
+    update_academic_student_final_assignment_transaction_adviser(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionAdviser
+    delete_academic_student_final_assignment_transaction_adviser(id: ID!): AcademicStudentFinalAssignmentTransactionAdviser
+}
