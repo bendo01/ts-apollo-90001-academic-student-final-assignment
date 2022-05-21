@@ -1,0 +1,23 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0",
+        import: ["@key", "@shareable", "@external"])
+scalar DateTime
+scalar Date
+scalar uuid
+
+type CommonPaginate {
+    page: Int,
+    per_page: Int,
+    sort: String,
+    order: String,
+    filter: String,
+    search: String,
+    total: Int,
+    last_page: Int
+}
+
+input CommonInput {
+    alphabet_code: String!
+    code: Int!
+    name: String!
+}
