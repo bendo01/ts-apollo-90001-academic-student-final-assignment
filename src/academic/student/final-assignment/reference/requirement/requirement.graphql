@@ -1,0 +1,28 @@
+type AcademicStudentFinalAssignmentReferenceRequirement {
+    id: ID!
+    code: Int!
+    alphabet_code: String!
+    name: String!
+    created_by: uuid,
+    modified_by: uuid,
+    created_at: DateTime,
+    updated_at: DateTime,
+    deleted_at: DateTime
+}
+
+type AcademicStudentFinalAssignmentReferenceRequirementPaginate {
+    pagination: AcademicStudentFinalAssignmentPaginate
+    data: [AcademicStudentFinalAssignmentReferenceRequirement],
+}
+
+type Query {
+    academic_student_final_assignment_reference_requirement_paginate(page: Int, per_page: Int, sort: String, order: String, filter: String, search: String): AcademicStudentFinalAssignmentReferenceRequirementPaginate
+    academic_student_final_assignment_reference_requirement(id: ID!): AcademicStudentFinalAssignmentReferenceRequirement
+}
+
+
+type Mutation {
+    create_academic_student_final_assignment_reference_requirement(data: PersonReferenceInput): AcademicStudentFinalAssignmentReferenceRequirement
+    update_academic_student_final_assignment_reference_requirement(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentReferenceRequirement
+    delete_academic_student_final_assignment_reference_requirement(id: ID!): AcademicStudentFinalAssignmentReferenceRequirement
+}

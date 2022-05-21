@@ -5,7 +5,7 @@ scalar DateTime
 scalar Date
 scalar uuid
 
-type CommonPaginate {
+type AcademicStudentFinalAssignmentPaginate {
     page: Int,
     per_page: Int,
     sort: String,
@@ -16,7 +16,7 @@ type CommonPaginate {
     last_page: Int
 }
 
-input CommonInput {
+input AcademicStudentFinalAssignmentInput {
     alphabet_code: String!
     code: Int!
     name: String!

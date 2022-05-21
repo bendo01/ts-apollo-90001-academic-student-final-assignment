@@ -1,0 +1,28 @@
+type AcademicStudentFinalAssignmentReferenceAdviserCategory {
+    id: ID!
+    code: Int!
+    alphabet_code: String!
+    name: String!
+    created_by: uuid,
+    modified_by: uuid,
+    created_at: DateTime,
+    updated_at: DateTime,
+    deleted_at: DateTime
+}
+
+type AcademicStudentFinalAssignmentReferenceAdviserCategoryPaginate {
+    pagination: AcademicStudentFinalAssignmentPaginate
+    data: [AcademicStudentFinalAssignmentReferenceAdviserCategory],
+}
+
+type Query {
+    academic_student_final_assignment_reference_adviser_category_paginate(page: Int, per_page: Int, sort: String, order: String, filter: String, search: String): AcademicStudentFinalAssignmentReferenceAdviserCategoryPaginate
+    academic_student_final_assignment_reference_adviser_category(id: ID!): AcademicStudentFinalAssignmentReferenceAdviserCategory
+}
+
+
+type Mutation {
+    create_academic_student_final_assignment_reference_adviser_category(data: PersonReferenceInput): AcademicStudentFinalAssignmentReferenceAdviserCategory
+    update_academic_student_final_assignment_reference_adviser_category(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentReferenceAdviserCategory
+    delete_academic_student_final_assignment_reference_adviser_category(id: ID!): AcademicStudentFinalAssignmentReferenceAdviserCategory
+}
