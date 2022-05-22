@@ -15,7 +15,7 @@ type AcademicStudentFinalAssignmentPaginate {
     last_page: Int
 }
 
-input AcademicStudentFinalAssignmentInput {
+input AcademicStudentFinalAssignmentReferenceInput {
     alphabet_code: String!
     code: Int!
     name: String!

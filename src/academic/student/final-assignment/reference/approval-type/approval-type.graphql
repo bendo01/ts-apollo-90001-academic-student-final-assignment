@@ -22,7 +22,7 @@ type Query {
 
 
 type Mutation {
-    create_academic_student_final_assignment_reference_approval_type(data: PersonReferenceInput): AcademicStudentFinalAssignmentReferenceApprovalType
-    update_academic_student_final_assignment_reference_approval_type(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentReferenceApprovalType
+    create_academic_student_final_assignment_reference_approval_type(data: AcademicStudentFinalAssignmentReferenceInput): AcademicStudentFinalAssignmentReferenceApprovalType
+    update_academic_student_final_assignment_reference_approval_type(id: ID!, data: AcademicStudentFinalAssignmentReferenceInput): AcademicStudentFinalAssignmentReferenceApprovalType
     delete_academic_student_final_assignment_reference_approval_type(id: ID!): AcademicStudentFinalAssignmentReferenceApprovalType
 }
