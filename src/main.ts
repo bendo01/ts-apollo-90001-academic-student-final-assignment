@@ -27,7 +27,12 @@ import { typeDefs, resolvers } from './lib/mergenerator';
         schema: schemas,
         debug: process.env.APP_ENVIRONTMENT == 'production' ? false: true,
         context: ({ req }) => {
-            if (req?.body?.query) {
+            let returned = {
+                user:'',
+                token:'',
+                permission:''
+            }
+            if (req.body && req.body.query) {
                 const gql_request = req.body.query;
                 const query_gql = `${gql_request}`;
                 // console.log(query_gql);
@@ -36,12 +41,17 @@ import { typeDefs, resolvers } from './lib/mergenerator';
                 if (gql_ekstract.operation_name != 'login' && gql_ekstract.operation_name != 'check_permission' ) {
                     const token_extractor = new UserTokenExtractor(req.headers.authorization);
                     // console.log(token_extractor);
-                    if (token_extractor.user) {
+                    if (token_extractor.user && token_extractor.token && gql_ekstract.operation_name) {
                         // console.log(token_extractor.user);
-                        return token_extractor.user;
+                        returned = {
+                            user: token_extractor.user,
+                            token: token_extractor.token,
+                            permission: gql_ekstract.operation_name
+                        };
                     }
                 }
             }
+            return returned;
         }
     });
     if (process.env.APP_ENVIRONTMENT && process.env.APP_ENVIRONTMENT == 'production') {
