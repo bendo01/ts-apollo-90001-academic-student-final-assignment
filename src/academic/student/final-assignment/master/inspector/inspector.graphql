@@ -1,5 +1,11 @@
 type AcademicStudentFinalAssignmentMasterInspector {
-    id: ID!
+    id: ID!,
+    code: Int!,
+    title: String!,
+    name: String!,
+    position: String!,
+    unit_id: uuid,
+    staff_id: uuid,
     created_by: uuid,
     modified_by: uuid,
     created_at: DateTime,

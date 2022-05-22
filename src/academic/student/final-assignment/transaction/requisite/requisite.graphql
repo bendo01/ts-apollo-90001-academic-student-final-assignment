@@ -1,5 +1,10 @@
 type AcademicStudentFinalAssignmentTransactionRequisite {
-    id: ID!
+    id: ID!,
+    thread: Int!,
+    submission_id: uuid!,
+    inspector_id: uuid!,
+    requirement_id: uuid!,
+    approval_type_id: uuid!,
     created_by: uuid,
     modified_by: uuid,
     created_at: DateTime,

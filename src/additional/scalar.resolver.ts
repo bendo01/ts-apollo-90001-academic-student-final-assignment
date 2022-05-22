@@ -1,7 +1,8 @@
-import { DateTimeResolver, DateResolver, UUIDResolver } from 'graphql-scalars';
+import { DateTimeResolver, DateResolver, UUIDResolver, TimeResolver } from 'graphql-scalars';
 
 module.exports = {
     DateTime: DateTimeResolver,
     Date: DateResolver, 
-    uuid: UUIDResolver
+    uuid: UUIDResolver,
+    Time: TimeResolver,
 }

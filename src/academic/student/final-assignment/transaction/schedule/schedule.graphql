@@ -1,5 +1,8 @@
 type AcademicStudentFinalAssignmentTransactionSchedule {
-    id: ID!
+    id: ID!,
+    schedule_date: Date!,
+    schedule_time: Time!,
+    submission_id: uuid!,
     created_by: uuid,
     modified_by: uuid,
     created_at: DateTime,

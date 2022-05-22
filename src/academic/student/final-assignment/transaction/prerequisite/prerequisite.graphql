@@ -1,5 +1,12 @@
 type AcademicStudentFinalAssignmentTransactionPrerequisite {
-    id: ID!
+    id: ID!,
+    thread: Int!,
+    requirement_id: uuid!,
+    submission_id: uuid!,
+    filename: String,
+    dir: String,
+    type: String,
+    filesize: Int,
     created_by: uuid,
     modified_by: uuid,
     created_at: DateTime,
