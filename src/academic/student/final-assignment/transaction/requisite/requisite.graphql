@@ -12,6 +12,14 @@ type AcademicStudentFinalAssignmentTransactionRequisite {
     deleted_at: DateTime
 }
 
+input AcademicStudentFinalAssignmentTransactionRequisiteInput {
+    thread: Int!,
+    submission_id: uuid!,
+    inspector_id: uuid!,
+    requirement_id: uuid!,
+    approval_type_id: uuid!,
+}
+
 type AcademicStudentFinalAssignmentTransactionRequisitePaginate {
     pagination: AcademicStudentFinalAssignmentPaginate
     data: [AcademicStudentFinalAssignmentTransactionRequisite],
@@ -22,9 +30,8 @@ type Query {
     academic_student_final_assignment_transaction_requisite(id: ID!): AcademicStudentFinalAssignmentTransactionRequisite
 }
 
-
 type Mutation {
-    create_academic_student_final_assignment_transaction_requisite(data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionRequisite
-    update_academic_student_final_assignment_transaction_requisite(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionRequisite
+    create_academic_student_final_assignment_transaction_requisite(data: AcademicStudentFinalAssignmentTransactionRequisiteInput): AcademicStudentFinalAssignmentTransactionRequisite
+    update_academic_student_final_assignment_transaction_requisite(id: ID!, data: AcademicStudentFinalAssignmentTransactionRequisiteInput): AcademicStudentFinalAssignmentTransactionRequisite
     delete_academic_student_final_assignment_transaction_requisite(id: ID!): AcademicStudentFinalAssignmentTransactionRequisite
 }

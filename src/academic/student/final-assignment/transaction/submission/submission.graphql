@@ -1,10 +1,25 @@
 type AcademicStudentFinalAssignmentTransactionSubmission {
-    id: ID!
+    id: ID!,
+    title: String!,
+    student_id: uuid!,
+    type_id: uuid!,
+    is_approved: Boolean!,
+    is_taken: Boolean!,
+    is_lock: Boolean!,
     created_by: uuid,
     modified_by: uuid,
     created_at: DateTime,
     updated_at: DateTime,
     deleted_at: DateTime
+}
+
+input AcademicStudentFinalAssignmentTransactionSubmissionInput {
+    title: String!,
+    student_id: uuid!,
+    type_id: uuid!,
+    is_approved: Boolean!,
+    is_taken: Boolean!,
+    is_lock: Boolean!,
 }
 
 type AcademicStudentFinalAssignmentTransactionSubmissionPaginate {
@@ -19,7 +34,7 @@ type Query {
 
 
 type Mutation {
-    create_academic_student_final_assignment_transaction_submission(data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionSubmission
-    update_academic_student_final_assignment_transaction_submission(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionSubmission
+    create_academic_student_final_assignment_transaction_submission(data: AcademicStudentFinalAssignmentTransactionSubmissionInput): AcademicStudentFinalAssignmentTransactionSubmission
+    update_academic_student_final_assignment_transaction_submission(id: ID!, data: AcademicStudentFinalAssignmentTransactionSubmissionInput): AcademicStudentFinalAssignmentTransactionSubmission
     delete_academic_student_final_assignment_transaction_submission(id: ID!): AcademicStudentFinalAssignmentTransactionSubmission
 }

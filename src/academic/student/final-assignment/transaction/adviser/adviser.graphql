@@ -11,6 +11,13 @@ type AcademicStudentFinalAssignmentTransactionAdviser {
     deleted_at: DateTime
 }
 
+input AcademicStudentFinalAssignmentTransactionAdviserInput {
+    thread: Int!,
+    lecturer_id: uuid!,
+    submission_id: uuid!,
+    adviser_category_id: uuid!,
+}
+
 type AcademicStudentFinalAssignmentTransactionAdviserPaginate {
     pagination: AcademicStudentFinalAssignmentPaginate
     data: [AcademicStudentFinalAssignmentTransactionAdviser],
@@ -23,7 +30,7 @@ type Query {
 
 
 type Mutation {
-    create_academic_student_final_assignment_transaction_adviser(data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionAdviser
-    update_academic_student_final_assignment_transaction_adviser(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionAdviser
+    create_academic_student_final_assignment_transaction_adviser(data: AcademicStudentFinalAssignmentTransactionAdviserInput): AcademicStudentFinalAssignmentTransactionAdviser
+    update_academic_student_final_assignment_transaction_adviser(id: ID!, data: AcademicStudentFinalAssignmentTransactionAdviserInput): AcademicStudentFinalAssignmentTransactionAdviser
     delete_academic_student_final_assignment_transaction_adviser(id: ID!): AcademicStudentFinalAssignmentTransactionAdviser
 }

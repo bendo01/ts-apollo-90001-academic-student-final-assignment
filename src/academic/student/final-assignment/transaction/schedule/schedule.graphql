@@ -10,6 +10,12 @@ type AcademicStudentFinalAssignmentTransactionSchedule {
     deleted_at: DateTime
 }
 
+input AcademicStudentFinalAssignmentTransactionScheduleInput {
+    schedule_date: Date!,
+    schedule_time: Time!,
+    submission_id: uuid!,
+}
+
 type AcademicStudentFinalAssignmentTransactionSchedulePaginate {
     pagination: AcademicStudentFinalAssignmentPaginate
     data: [AcademicStudentFinalAssignmentTransactionSchedule],
@@ -20,9 +26,8 @@ type Query {
     academic_student_final_assignment_transaction_schedule(id: ID!): AcademicStudentFinalAssignmentTransactionSchedule
 }
 
-
 type Mutation {
-    create_academic_student_final_assignment_transaction_schedule(data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionSchedule
-    update_academic_student_final_assignment_transaction_schedule(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionSchedule
+    create_academic_student_final_assignment_transaction_schedule(data: AcademicStudentFinalAssignmentTransactionScheduleInput): AcademicStudentFinalAssignmentTransactionSchedule
+    update_academic_student_final_assignment_transaction_schedule(id: ID!, data: AcademicStudentFinalAssignmentTransactionScheduleInput): AcademicStudentFinalAssignmentTransactionSchedule
     delete_academic_student_final_assignment_transaction_schedule(id: ID!): AcademicStudentFinalAssignmentTransactionSchedule
 }

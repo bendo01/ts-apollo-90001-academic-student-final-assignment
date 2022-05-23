@@ -14,6 +14,16 @@ type AcademicStudentFinalAssignmentTransactionPrerequisite {
     deleted_at: DateTime
 }
 
+input AcademicStudentFinalAssignmentTransactionPrerequisiteInput {
+    thread: Int!,
+    requirement_id: uuid!,
+    submission_id: uuid!,
+    filename: String,
+    dir: String,
+    type: String,
+    filesize: Int,
+}
+
 type AcademicStudentFinalAssignmentTransactionPrerequisitePaginate {
     pagination: AcademicStudentFinalAssignmentPaginate
     data: [AcademicStudentFinalAssignmentTransactionPrerequisite],
@@ -26,7 +36,7 @@ type Query {
 
 
 type Mutation {
-    create_academic_student_final_assignment_transaction_prerequisite(data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionPrerequisite
-    update_academic_student_final_assignment_transaction_prerequisite(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentTransactionPrerequisite
+    create_academic_student_final_assignment_transaction_prerequisite(data: AcademicStudentFinalAssignmentTransactionPrerequisiteInput): AcademicStudentFinalAssignmentTransactionPrerequisite
+    update_academic_student_final_assignment_transaction_prerequisite(id: ID!, data: AcademicStudentFinalAssignmentTransactionPrerequisiteInput): AcademicStudentFinalAssignmentTransactionPrerequisite
     delete_academic_student_final_assignment_transaction_prerequisite(id: ID!): AcademicStudentFinalAssignmentTransactionPrerequisite
 }

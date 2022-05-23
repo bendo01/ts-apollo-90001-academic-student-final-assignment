@@ -13,6 +13,15 @@ type AcademicStudentFinalAssignmentMasterInspector {
     deleted_at: DateTime
 }
 
+input AcademicStudentFinalAssignmentMasterInspectorInput {
+    title: String!,
+    name: String!,
+    position: String!,
+    code: Int!,
+    unit_id: uuid!,
+    staff_id: uuid!,
+}
+
 type AcademicStudentFinalAssignmentMasterInspectorPaginate {
     pagination: AcademicStudentFinalAssignmentPaginate
     data: [AcademicStudentFinalAssignmentMasterInspector],
@@ -25,7 +34,7 @@ type Query {
 
 
 type Mutation {
-    create_academic_student_final_assignment_master_instructor(data: PersonReferenceInput): AcademicStudentFinalAssignmentMasterInspector
-    update_academic_student_final_assignment_master_instructor(id: ID!, data: PersonReferenceInput): AcademicStudentFinalAssignmentMasterInspector
+    create_academic_student_final_assignment_master_instructor(data: AcademicStudentFinalAssignmentMasterInspectorInput): AcademicStudentFinalAssignmentMasterInspector
+    update_academic_student_final_assignment_master_instructor(id: ID!, data: AcademicStudentFinalAssignmentMasterInspectorInput): AcademicStudentFinalAssignmentMasterInspector
     delete_academic_student_final_assignment_master_instructor(id: ID!): AcademicStudentFinalAssignmentMasterInspector
 }
