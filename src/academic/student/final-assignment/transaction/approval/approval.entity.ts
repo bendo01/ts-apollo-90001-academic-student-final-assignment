@@ -3,7 +3,7 @@ import { Entity, Column } from 'typeorm';
 import { IsNotEmpty, IsUUID } from 'class-validator';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'approvals' })
-export class AcademicStudentFinalAssignmentTransactionApproval extends MasterEntity {
+export class AcademicStudentFinalAssignmentTransactionApprovalEntity extends MasterEntity {
     @Column({ name: 'prerequisite_id', type: 'uuid' })
     @IsNotEmpty()
     @IsUUID()

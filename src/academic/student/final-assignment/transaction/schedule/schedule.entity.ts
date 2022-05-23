@@ -3,7 +3,7 @@ import { Entity, Column } from 'typeorm';
 import { IsNotEmpty, IsUUID } from 'class-validator';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'schedules' })
-export class AcademicStudentFinalAssignmentTransactionSchedule extends MasterEntity {
+export class AcademicStudentFinalAssignmentTransactionScheduleEntity extends MasterEntity {
     @Column({ name: 'schedule_date', type: 'date' })
     @IsNotEmpty()
     schedule_date: Date;

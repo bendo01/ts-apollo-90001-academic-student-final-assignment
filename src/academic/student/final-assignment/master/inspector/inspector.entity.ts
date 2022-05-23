@@ -3,7 +3,7 @@ import { Entity, Column } from 'typeorm';
 import { IsInt, IsNotEmpty, IsUUID } from 'class-validator';
 
 @Entity({ schema: 'academic_student_final_assignment_master', name: 'inspectors' })
-export class AcademicStudentFinalAssignmentMasterInspector extends MasterEntity {
+export class AcademicStudentFinalAssignmentMasterInspectorEntity extends MasterEntity {
     @Column({ name: 'code', type: 'integer' })
     @IsNotEmpty()
     @IsInt()
