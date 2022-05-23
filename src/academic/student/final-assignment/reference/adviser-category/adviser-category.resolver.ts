@@ -2,7 +2,7 @@ import { AppDataSource } from '../../../../../config/database';
 import { AcademicStudentFinalAssignmentReferenceAdviserCategoryEntity as ModelEntity } from './adviser-category.entity';
 import { CheckUserPermission } from '../../../../../lib/check-user-permission.class';
 
-const model_table_name:string = 'academic_student_reference.registrations';
+const model_table_name:string = 'academic_student_final_assignment_reference.adviser_categories';
 
 module.exports = {
     Query: {
