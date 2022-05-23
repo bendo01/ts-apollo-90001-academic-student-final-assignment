@@ -91,12 +91,11 @@ module.exports = {
             if (!check_permission) return null;
 
             const data: object = {
-                title: input.data.title,
-                name: input.data.name,
-                position: input.data.position,
-                code: input.data.code,
-                unit_id: input.data.unit_id,
-                staff_id: input.data.staff_id,
+                thread: input.data.thread,
+                adviser_id: input.data.adviser_id,
+                schedule_id: input.data.schedule_id,
+                type_id: input.data.type_id,
+                grade: input.data.grade,
             };
             return await AppDataSource.getRepository(ModelEntity).save(data);
         },
@@ -107,12 +106,11 @@ module.exports = {
 
             const id:string = input.id;
             const data: object = {
-                title: input.data.title,
-                name: input.data.name,
-                position: input.data.position,
-                code: input.data.code,
-                unit_id: input.data.unit_id,
-                staff_id: input.data.staff_id,
+                thread: input.data.thread,
+                adviser_id: input.data.adviser_id,
+                schedule_id: input.data.schedule_id,
+                type_id: input.data.type_id,
+                grade: input.data.grade,
             };
             await AppDataSource.manager.update(ModelEntity, id, data);
             return await AppDataSource.getRepository(ModelEntity).findOneBy({id});
