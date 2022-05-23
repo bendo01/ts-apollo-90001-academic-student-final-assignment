@@ -1,7 +1,7 @@
 type AcademicStudentFinalAssignmentTransactionSchedule {
     id: ID!,
     schedule_date: Date!,
-    schedule_time: Time!,
+    schedule_time: DateTime!,
     submission_id: uuid!,
     created_by: uuid,
     modified_by: uuid,
@@ -12,7 +12,7 @@ type AcademicStudentFinalAssignmentTransactionSchedule {
 
 input AcademicStudentFinalAssignmentTransactionScheduleInput {
     schedule_date: Date!,
-    schedule_time: Time!,
+    schedule_time: DateTime!,
     submission_id: uuid!,
 }
 

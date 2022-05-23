@@ -6,7 +6,7 @@ const model_table_name:string = 'academic_student_reference.registrations';
 
 module.exports = {
     Query: {
-        academic_student_reference_registration: async ( _:any, args:any, context: any ) => {
+        academic_student_final_assignment_reference_adviser_category: async ( _:any, args:any, context: any ) => {
             const check_auth_user_permission = new CheckUserPermission(context.token, context.user, context.permission);
             let check_permission = await check_auth_user_permission.check();
             if (!check_permission) return null;
@@ -14,7 +14,7 @@ module.exports = {
             const data = AppDataSource.manager.findOneBy(ModelEntity, { id: args.id });
             return data;
         },
-        academic_student_reference_registration_paginate: async ( _:any, args:any, context: any ) => {
+        academic_student_final_assignment_reference_adviser_category_paginate: async ( _:any, args:any, context: any ) => {
             const check_auth_user_permission = new CheckUserPermission(context?.token, context?.user, context?.permission);
             let check_permission = await check_auth_user_permission.check();
             if (!check_permission) return null;
@@ -85,7 +85,7 @@ module.exports = {
         }
     },
     Mutation: {
-        create_academic_student_reference_registration: async ( _:any, input:any, context: any ) => {
+        create_academic_student_final_assignment_reference_adviser_category: async ( _:any, input:any, context: any ) => {
             const check_auth_user_permission = new CheckUserPermission(context.token, context.user, context.permission);
             let check_permission = await check_auth_user_permission.check();
             if (!check_permission) return null;
@@ -97,7 +97,7 @@ module.exports = {
             };
             return await AppDataSource.getRepository(ModelEntity).save(data);
         },
-        update_academic_student_reference_registration: async ( _:any, input:any, context: any ) => {
+        update_academic_student_final_assignment_reference_adviser_category: async ( _:any, input:any, context: any ) => {
             const check_auth_user_permission = new CheckUserPermission(context.token, context.user, context.permission);
             let check_permission = await check_auth_user_permission.check();
             if (!check_permission) return null;
@@ -111,7 +111,7 @@ module.exports = {
             await AppDataSource.manager.update(ModelEntity, id, data);
             return await AppDataSource.getRepository(ModelEntity).findOneBy({id});
         },
-        delete_academic_student_reference_registration: async ( _:any, input:any, context: any ) => {
+        delete_academic_student_final_assignment_reference_adviser_category: async ( _:any, input:any, context: any ) => {
             const check_auth_user_permission = new CheckUserPermission(context.token, context.user, context.permission);
             let check_permission = await check_auth_user_permission.check();
             if (!check_permission) return null;
