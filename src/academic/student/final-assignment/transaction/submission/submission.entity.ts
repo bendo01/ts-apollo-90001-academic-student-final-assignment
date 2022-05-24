@@ -1,10 +1,13 @@
 import { MasterEntity } from '../../../../../abstract/master.entity';
-import { Entity, Column, OneToMany } from 'typeorm';
+import { Entity, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 import { IsNotEmpty, IsUUID } from 'class-validator';
 import { AcademicStudentFinalAssignmentTransactionAdviserEntity } from '../adviser/adviser.entity';
 import { AcademicStudentFinalAssignmentTransactionPrerequisiteEntity } from '../prerequisite/prerequisite.entity';
 import { AcademicStudentFinalAssignmentTransactionRequisiteEntity } from '../requisite/requisite.entity';
 import { AcademicStudentFinalAssignmentTransactionScheduleEntity } from '../schedule/schedule.entity';
+import { AcademicStudentFinalAssignmentReferenceTypeEntity } from '../../reference/type/type.entity';
+import { AcademicStudentFinalAssignmentReferenceCategoryEntity } from '../../reference/category/category.entity';
+import { AcademicStudentFinalAssignmentReferenceApprovalTypeEntity } from '../../reference/approval-type/approval-type.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'submissions' })
 export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends MasterEntity {
@@ -21,6 +24,11 @@ export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends M
     @IsNotEmpty()
     @IsUUID()
     type_id: string;
+
+    @Column({ name: 'category_id', type: 'uuid' })
+    @IsNotEmpty()
+    @IsUUID()
+    category_id: string;
 
     @Column({ name: 'approval_type_id', type: 'uuid' })
     @IsNotEmpty()
@@ -56,4 +64,25 @@ export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends M
         (schedule: AcademicStudentFinalAssignmentTransactionScheduleEntity) => schedule.submission,
     )
     schedules: Array<AcademicStudentFinalAssignmentTransactionScheduleEntity>;
+
+    @ManyToOne(
+        () => AcademicStudentFinalAssignmentReferenceTypeEntity,
+        (type: AcademicStudentFinalAssignmentReferenceTypeEntity) => type.submission,
+    )
+    @JoinColumn({ name: 'type_id' })
+    type: AcademicStudentFinalAssignmentReferenceTypeEntity;
+
+    @ManyToOne(
+        () => AcademicStudentFinalAssignmentReferenceCategoryEntity,
+        (category: AcademicStudentFinalAssignmentReferenceCategoryEntity) => category.submission,
+    )
+    @JoinColumn({ name: 'category_id' })
+    category: AcademicStudentFinalAssignmentReferenceCategoryEntity;
+
+    @ManyToOne(
+        () => AcademicStudentFinalAssignmentReferenceApprovalTypeEntity,
+        (approval_type: AcademicStudentFinalAssignmentReferenceApprovalTypeEntity) => approval_type.submissions,
+    )
+    @JoinColumn({ name: 'approval_type_id' })
+    approval_type: AcademicStudentFinalAssignmentReferenceApprovalTypeEntity;
 }
