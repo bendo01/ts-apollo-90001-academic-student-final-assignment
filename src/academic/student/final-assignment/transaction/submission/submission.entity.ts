@@ -2,6 +2,7 @@ import { MasterEntity } from '../../../../../abstract/master.entity';
 import { Entity, Column, OneToMany } from 'typeorm';
 import { IsNotEmpty, IsUUID } from 'class-validator';
 import { AcademicStudentFinalAssignmentTransactionAdviserEntity } from '../adviser/adviser.entity';
+import { AcademicStudentFinalAssignmentTransactionPrerequisiteEntity } from '../prerequisite/prerequisite.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'submissions' })
 export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends MasterEntity {
@@ -35,4 +36,10 @@ export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends M
         (adviser: AcademicStudentFinalAssignmentTransactionAdviserEntity) => adviser.submission,
     )
     advisers: Array<AcademicStudentFinalAssignmentTransactionAdviserEntity>;
+
+    @OneToMany(
+        () => AcademicStudentFinalAssignmentTransactionPrerequisiteEntity,
+        (prerequisite: AcademicStudentFinalAssignmentTransactionPrerequisiteEntity) => prerequisite.submission,
+    )
+    prerequisites: Array<AcademicStudentFinalAssignmentTransactionPrerequisiteEntity>;
 }

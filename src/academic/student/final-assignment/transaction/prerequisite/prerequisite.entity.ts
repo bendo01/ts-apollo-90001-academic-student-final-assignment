@@ -1,7 +1,9 @@
 import { MasterEntity } from '../../../../../abstract/master.entity';
-import { Entity, Column, OneToMany } from 'typeorm';
+import { Entity, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 import { IsInt, IsNotEmpty, IsUUID } from 'class-validator';
 import { AcademicStudentFinalAssignmentTransactionApprovalEntity } from '../approval/approval.entity';
+import { AcademicStudentFinalAssignmentReferenceRequirementEntity } from '../../reference/requirement/requirement.entity';
+import { AcademicStudentFinalAssignmentTransactionSubmissionEntity } from '../submission/submission.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'prerequisites' })
 export class AcademicStudentFinalAssignmentTransactionPrerequisiteEntity extends MasterEntity {
@@ -38,4 +40,18 @@ export class AcademicStudentFinalAssignmentTransactionPrerequisiteEntity extends
         (approval: AcademicStudentFinalAssignmentTransactionApprovalEntity) => approval.prerequisite,
     )
     approvals: Array<AcademicStudentFinalAssignmentTransactionApprovalEntity>;
+
+    @ManyToOne(
+        () => AcademicStudentFinalAssignmentReferenceRequirementEntity,
+        (requirement: AcademicStudentFinalAssignmentReferenceRequirementEntity) => requirement.prerequisites,
+    )
+    @JoinColumn({ name: 'requirement_id' })
+    requirement: AcademicStudentFinalAssignmentReferenceRequirementEntity;
+
+    @ManyToOne(
+        () => AcademicStudentFinalAssignmentTransactionSubmissionEntity,
+        (submission: AcademicStudentFinalAssignmentTransactionSubmissionEntity) => submission.prerequisites,
+    )
+    @JoinColumn({ name: 'submission_id' })
+    submission: AcademicStudentFinalAssignmentTransactionSubmissionEntity;
 }
