@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec ts-node src/main.ts",
+    "dev": "nodemon --exec ts-node src/main.ts",
     "compile": "tsc",
-    "start:prod": "node build/server.js"
+    "dev:prod": "node build/server.js"
   },
   "nodemonConfig": {
     "ext": "ts,graphql"
