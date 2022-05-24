@@ -1,6 +1,7 @@
 import { MasterEntity } from '../../../../../abstract/master.entity';
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { IsNotEmpty, IsUUID } from 'class-validator';
+import { AcademicStudentFinalAssignmentTransactionAdviserEntity } from '../adviser/adviser.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'submissions' })
 export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends MasterEntity {
@@ -28,4 +29,10 @@ export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends M
 
     @Column({ name: 'is_lock', type: 'timestamp', nullable:true })
     is_lock: Date;
+
+    @OneToMany(
+        () => AcademicStudentFinalAssignmentTransactionAdviserEntity,
+        (adviser: AcademicStudentFinalAssignmentTransactionAdviserEntity) => adviser.submission,
+    )
+    advisers: Array<AcademicStudentFinalAssignmentTransactionAdviserEntity>;
 }

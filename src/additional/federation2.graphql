@@ -20,3 +20,19 @@ input AcademicStudentFinalAssignmentReferenceInput {
     code: Int!
     name: String!
 }
+
+extend type InstitutionMasterUnit @key(fields: "id") {
+    id: ID! @external,
+    inspectors: [AcademicStudentFinalAssignmentMasterInspector],
+
+}
+
+extend type InstitutionMasterStaff @key(fields: "id") {
+    id: ID! @external,
+    inspectors: [AcademicStudentFinalAssignmentMasterInspector],
+}
+
+extend type AcademicLecturerMasterLecturer @key(fields: "id") {
+    id: ID! @external,
+    advisers: [AcademicStudentFinalAssignmentTransactionAdviser],
+}
