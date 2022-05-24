@@ -1,7 +1,8 @@
 import { MasterEntity } from '../../../../../abstract/master.entity';
-import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { IsInt, IsNotEmpty, IsUUID } from 'class-validator';
 import { AcademicStudentFinalAssignmentTransactionSubmissionEntity } from '../submission/submission.entity';
+import { AcademicStudentFinalAssignmentTransactionEvaluationEntity } from '../evaluation/evaluation.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'advisers' })
 export class AcademicStudentFinalAssignmentTransactionAdviserEntity extends MasterEntity {
@@ -24,6 +25,12 @@ export class AcademicStudentFinalAssignmentTransactionAdviserEntity extends Mast
     @IsNotEmpty()
     @IsUUID()
     adviser_category_id: string;
+
+    @OneToMany(
+        () => AcademicStudentFinalAssignmentTransactionEvaluationEntity,
+        (evaluation: AcademicStudentFinalAssignmentTransactionEvaluationEntity) => evaluation.adviser,
+    )
+    evaluations: Array<AcademicStudentFinalAssignmentTransactionEvaluationEntity>;
 
     @ManyToOne(
         () => AcademicStudentFinalAssignmentTransactionSubmissionEntity,
