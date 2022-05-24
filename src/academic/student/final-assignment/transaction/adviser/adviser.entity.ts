@@ -3,6 +3,7 @@ import { Entity, Column, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { IsInt, IsNotEmpty, IsUUID } from 'class-validator';
 import { AcademicStudentFinalAssignmentTransactionSubmissionEntity } from '../submission/submission.entity';
 import { AcademicStudentFinalAssignmentTransactionEvaluationEntity } from '../evaluation/evaluation.entity';
+import { AcademicStudentFinalAssignmentReferenceAdviserCategoryEntity } from '../../reference/adviser-category/adviser-category.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'advisers' })
 export class AcademicStudentFinalAssignmentTransactionAdviserEntity extends MasterEntity {
@@ -38,4 +39,11 @@ export class AcademicStudentFinalAssignmentTransactionAdviserEntity extends Mast
     )
     @JoinColumn({ name: 'submission_id' })
     submission: AcademicStudentFinalAssignmentTransactionSubmissionEntity;
+
+    @ManyToOne(
+        () => AcademicStudentFinalAssignmentReferenceAdviserCategoryEntity,
+        (adviser_category: AcademicStudentFinalAssignmentReferenceAdviserCategoryEntity) => adviser_category.advisers,
+    )
+    @JoinColumn({ name: 'adviser_category_id' })
+    adviser_category: AcademicStudentFinalAssignmentReferenceAdviserCategoryEntity;
 }
