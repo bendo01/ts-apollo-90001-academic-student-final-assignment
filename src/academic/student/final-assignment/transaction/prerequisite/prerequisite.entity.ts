@@ -1,6 +1,7 @@
 import { MasterEntity } from '../../../../../abstract/master.entity';
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { IsInt, IsNotEmpty, IsUUID } from 'class-validator';
+import { AcademicStudentFinalAssignmentTransactionApprovalEntity } from '../approval/approval.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'prerequisites' })
 export class AcademicStudentFinalAssignmentTransactionPrerequisiteEntity extends MasterEntity {
@@ -31,4 +32,10 @@ export class AcademicStudentFinalAssignmentTransactionPrerequisiteEntity extends
     @Column({ name: 'filesize', type: 'integer' })
     @IsInt()
     filesize: number;
+
+    @OneToMany(
+        () => AcademicStudentFinalAssignmentTransactionApprovalEntity,
+        (approval: AcademicStudentFinalAssignmentTransactionApprovalEntity) => approval.prerequisite,
+    )
+    approvals: Array<AcademicStudentFinalAssignmentTransactionApprovalEntity>;
 }

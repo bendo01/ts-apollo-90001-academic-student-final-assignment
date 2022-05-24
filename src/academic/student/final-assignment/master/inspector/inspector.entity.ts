@@ -1,6 +1,7 @@
 import { MasterEntity } from '../../../../../abstract/master.entity';
-import { Entity, Column } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { IsInt, IsNotEmpty, IsUUID } from 'class-validator';
+import { AcademicStudentFinalAssignmentTransactionApprovalEntity } from '../../transaction/approval/approval.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_master', name: 'inspectors' })
 export class AcademicStudentFinalAssignmentMasterInspectorEntity extends MasterEntity {
@@ -30,4 +31,10 @@ export class AcademicStudentFinalAssignmentMasterInspectorEntity extends MasterE
     @IsNotEmpty()
     @IsUUID()
     staff_id: string;
+
+    @OneToMany(
+        () => AcademicStudentFinalAssignmentTransactionApprovalEntity,
+        (approval: AcademicStudentFinalAssignmentTransactionApprovalEntity) => approval.inspector,
+    )
+    approvals: Array<AcademicStudentFinalAssignmentTransactionApprovalEntity>;
 }
