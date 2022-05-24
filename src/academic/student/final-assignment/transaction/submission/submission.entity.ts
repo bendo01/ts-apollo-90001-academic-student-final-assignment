@@ -4,6 +4,7 @@ import { IsNotEmpty, IsUUID } from 'class-validator';
 import { AcademicStudentFinalAssignmentTransactionAdviserEntity } from '../adviser/adviser.entity';
 import { AcademicStudentFinalAssignmentTransactionPrerequisiteEntity } from '../prerequisite/prerequisite.entity';
 import { AcademicStudentFinalAssignmentTransactionRequisiteEntity } from '../requisite/requisite.entity';
+import { AcademicStudentFinalAssignmentTransactionScheduleEntity } from '../schedule/schedule.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'submissions' })
 export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends MasterEntity {
@@ -49,4 +50,10 @@ export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends M
         (requisite: AcademicStudentFinalAssignmentTransactionRequisiteEntity) => requisite.submission,
     )
     requisites: Array<AcademicStudentFinalAssignmentTransactionRequisiteEntity>;
+
+    @OneToMany(
+        () => AcademicStudentFinalAssignmentTransactionScheduleEntity,
+        (schedule: AcademicStudentFinalAssignmentTransactionScheduleEntity) => schedule.submission,
+    )
+    schedules: Array<AcademicStudentFinalAssignmentTransactionScheduleEntity>;
 }
