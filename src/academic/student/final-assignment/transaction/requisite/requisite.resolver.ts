@@ -1,6 +1,10 @@
 import { AppDataSource } from '../../../../../config/database';
 import { AcademicStudentFinalAssignmentTransactionRequisiteEntity as ModelEntity } from './requisite.entity';
 import { CheckUserPermission } from '../../../../../lib/check-user-permission.class';
+import { AcademicStudentFinalAssignmentReferenceRequirementEntity } from '../../reference/requirement/requirement.entity';
+import { AcademicStudentFinalAssignmentTransactionSubmissionEntity } from '../submission/submission.entity';
+import { AcademicStudentFinalAssignmentMasterInspectorEntity } from '../../master/inspector/inspector.entity';
+import { AcademicStudentFinalAssignmentReferenceApprovalTypeEntity } from '../../reference/approval-type/approval-type.entity';
 
 const model_table_name:string = 'academic_student_final_assignment_transaction.requisites';
 
@@ -124,6 +128,20 @@ module.exports = {
             const query = model.createQueryBuilder(model_table_name);
             await query.softDelete().from(ModelEntity).where(`${model_table_name}.id = :id`, { id }).execute();
             return data;
+        },
+    },
+    AcademicStudentFinalAssignmentTransactionRequisite: {
+        async requirement (requisite: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceRequirementEntity, { id: requisite.requirement_id });
+        },
+        async submission (requisite: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentTransactionSubmissionEntity, { id: requisite.submission_id });
+        },
+        async inspector (requisite: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentMasterInspectorEntity, { id: requisite.inspector_id });
+        },
+        async approval_type (requisite: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceApprovalTypeEntity, { id: requisite.approval_type_id });
         },
     }
 }
