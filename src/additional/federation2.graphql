@@ -36,3 +36,8 @@ extend type AcademicLecturerMasterLecturer @key(fields: "id") {
     id: ID! @external,
     advisers: [AcademicStudentFinalAssignmentTransactionAdviser],
 }
+
+extend type AcademicStudentMasterStudent @key(fields: "id") {
+    id: ID! @external,
+    submissions: [AcademicStudentFinalAssignmentTransactionSubmission],
+}

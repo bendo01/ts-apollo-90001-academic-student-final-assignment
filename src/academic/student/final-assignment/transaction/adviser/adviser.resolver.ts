@@ -1,6 +1,8 @@
 import { AppDataSource } from '../../../../../config/database';
 import { AcademicStudentFinalAssignmentTransactionAdviserEntity as ModelEntity } from './adviser.entity';
 import { CheckUserPermission } from '../../../../../lib/check-user-permission.class';
+import { AcademicStudentFinalAssignmentTransactionSubmissionEntity } from '../submission/submission.entity';
+import { AcademicStudentFinalAssignmentReferenceAdviserCategoryEntity } from '../../reference/adviser-category/adviser-category.entity';
 
 const model_table_name:string = 'academic_student_final_assignment_transaction.adviser';
 
@@ -125,5 +127,16 @@ module.exports = {
             await query.softDelete().from(ModelEntity).where(`${model_table_name}.id = :id`, { id }).execute();
             return data;
         },
+    },
+    AcademicStudentFinalAssignmentTransactionAdviser: {
+        lecturer (adviser: any) {
+            return { __typename: "AcademicLecturerMasterLecturer",id : adviser.lecturer_id }
+        },
+        async submission (adviser: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentTransactionSubmissionEntity, { id: adviser.student_id });
+        },
+        async adviser_category (adviser: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceAdviserCategoryEntity, { id: adviser.adviser_category_id });
+        }
     }
 }
