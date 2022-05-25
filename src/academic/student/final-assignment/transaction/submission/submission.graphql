@@ -3,7 +3,7 @@ type AcademicStudentFinalAssignmentTransactionSubmission {
     title: String!,
     student_id: uuid!,
     type_id: uuid!,
-    is_approved: Boolean!,
+    approval_type_id: uuid!,
     is_taken: Boolean!,
     is_lock: Boolean!,
     created_by: uuid,
@@ -17,7 +17,7 @@ input AcademicStudentFinalAssignmentTransactionSubmissionInput {
     title: String!,
     student_id: uuid!,
     type_id: uuid!,
-    is_approved: Boolean!,
+    approval_type_id: uuid!,
     is_taken: Boolean!,
     is_lock: Boolean!,
 }

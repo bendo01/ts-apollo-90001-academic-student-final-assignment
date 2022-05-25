@@ -1,8 +1,11 @@
 import { AppDataSource } from '../../../../../config/database';
 import { AcademicStudentFinalAssignmentTransactionSubmissionEntity as ModelEntity } from './submission.entity';
 import { CheckUserPermission } from '../../../../../lib/check-user-permission.class';
+import { AcademicStudentFinalAssignmentReferenceApprovalTypeEntity } from '../../reference/approval-type/approval-type.entity';
+import { AcademicStudentFinalAssignmentReferenceTypeEntity } from '../../reference/type/type.entity';
+import { AcademicStudentFinalAssignmentReferenceCategoryEntity } from '../../reference/category/category.entity';
 
-const model_table_name:string = 'academic_student_final_assignment_transaction.schedules';
+const model_table_name:string = 'academic_student_final_assignment_transaction.submissions';
 
 module.exports = {
     Query: {
@@ -94,7 +97,7 @@ module.exports = {
                 title: input.data.title,
                 student_id: input.data.student_id,
                 type_id: input.data.type_id,
-                is_approved: input.data.is_approved,
+                approval_type_id: input.data.approval_type_id,
                 is_taken: input.data.is_taken,
                 is_lock: input.data.is_lock,
             };
@@ -110,7 +113,7 @@ module.exports = {
                 title: input.data.title,
                 student_id: input.data.student_id,
                 type_id: input.data.type_id,
-                is_approved: input.data.is_approved,
+                approval_type_id: input.data.approval_type_id,
                 is_taken: input.data.is_taken,
                 is_lock: input.data.is_lock,
             };
@@ -128,6 +131,20 @@ module.exports = {
             const query = model.createQueryBuilder(model_table_name);
             await query.softDelete().from(ModelEntity).where(`${model_table_name}.id = :id`, { id }).execute();
             return data;
+        },
+    },
+    AcademicStudentFinalAssignmentTransactionSubmission: {
+        student (submission: any) {
+            return { __typename: "AcademicStudentMasterStudent",id : submission.student_id }
+        },
+        async approval_type (submission: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceApprovalTypeEntity, { id: submission.approval_type_id });
+        },
+        async type (submission: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceTypeEntity, { id: submission.type_id });
+        },
+        async category (submission: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceCategoryEntity, { id: submission.category_id });
         },
     }
 }

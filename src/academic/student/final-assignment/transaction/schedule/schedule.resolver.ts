@@ -1,6 +1,7 @@
 import { AppDataSource } from '../../../../../config/database';
 import { AcademicStudentFinalAssignmentTransactionScheduleEntity as ModelEntity } from './schedule.entity';
 import { CheckUserPermission } from '../../../../../lib/check-user-permission.class';
+import { AcademicStudentFinalAssignmentTransactionSubmissionEntity } from '../submission/submission.entity';
 
 const model_table_name:string = 'academic_student_final_assignment_transaction.schedules';
 
@@ -122,6 +123,11 @@ module.exports = {
             const query = model.createQueryBuilder(model_table_name);
             await query.softDelete().from(ModelEntity).where(`${model_table_name}.id = :id`, { id }).execute();
             return data;
+        },
+    },
+    AcademicStudentFinalAssignmentTransactionSchedule: {
+        async submission (schedule: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentTransactionSubmissionEntity, { id: schedule.requirement_id });
         },
     }
 }
