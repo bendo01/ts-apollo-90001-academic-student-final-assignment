@@ -1,6 +1,8 @@
 import { AppDataSource } from '../../../../../config/database';
 import { AcademicStudentFinalAssignmentTransactionPrerequisiteEntity as ModelEntity } from './prerequisite.entity';
 import { CheckUserPermission } from '../../../../../lib/check-user-permission.class';
+import { AcademicStudentFinalAssignmentReferenceRequirementEntity } from '../../reference/requirement/requirement.entity';
+import { AcademicStudentFinalAssignmentTransactionSubmissionEntity } from '../submission/submission.entity';
 
 const model_table_name:string = 'academic_student_final_assignment_transaction.prerequisites';
 
@@ -128,6 +130,14 @@ module.exports = {
             const query = model.createQueryBuilder(model_table_name);
             await query.softDelete().from(ModelEntity).where(`${model_table_name}.id = :id`, { id }).execute();
             return data;
+        },
+    },
+    AcademicStudentFinalAssignmentTransactionPrerequisite: {
+        async requirement (prerequisite: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceRequirementEntity, { id: prerequisite.requirement_id });
+        },
+        async submission (prerequisite: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentTransactionSubmissionEntity, { id: prerequisite.submission_id });
         },
     }
 }

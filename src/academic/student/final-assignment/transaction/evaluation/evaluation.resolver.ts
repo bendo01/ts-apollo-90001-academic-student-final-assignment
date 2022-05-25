@@ -1,6 +1,9 @@
 import { AppDataSource } from '../../../../../config/database';
 import { AcademicStudentFinalAssignmentTransactionEvaluationEntity as ModelEntity } from './evaluation.entity';
 import { CheckUserPermission } from '../../../../../lib/check-user-permission.class';
+import { AcademicStudentFinalAssignmentReferenceTypeEntity } from '../../reference/type/type.entity';
+import { AcademicStudentFinalAssignmentTransactionScheduleEntity } from '../schedule/schedule.entity';
+import { AcademicStudentFinalAssignmentTransactionAdviserEntity } from '../adviser/adviser.entity';
 
 const model_table_name:string = 'academic_student_final_assignment_transaction.approvals';
 
@@ -126,6 +129,17 @@ module.exports = {
             const query = model.createQueryBuilder(model_table_name);
             await query.softDelete().from(ModelEntity).where(`${model_table_name}.id = :id`, { id }).execute();
             return data;
+        },
+    },
+    AcademicStudentFinalAssignmentTransactionEvaluation: {
+        async adviser (evaluation: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentTransactionAdviserEntity, { id: evaluation.adviser_id });
+        },
+        async schedule (evaluation: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentTransactionScheduleEntity, { id: evaluation.schedule_id });
+        },
+        async type (evaluation: any) {
+            return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceTypeEntity, { id: evaluation.type_id });
         },
     }
 }
