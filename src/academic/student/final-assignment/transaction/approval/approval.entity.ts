@@ -4,6 +4,7 @@ import { IsNotEmpty, IsUUID } from 'class-validator';
 import { AcademicStudentFinalAssignmentTransactionPrerequisiteEntity } from '../prerequisite/prerequisite.entity';
 import { AcademicStudentFinalAssignmentMasterInspectorEntity } from '../../master/inspector/inspector.entity';
 import { AcademicStudentFinalAssignmentReferenceTypeEntity } from '../../reference/type/type.entity';
+import { AcademicStudentFinalAssignmentReferenceApprovalTypeEntity } from '../../reference/approval-type/approval-type.entity';
 
 @Entity({ schema: 'academic_student_final_assignment_transaction', name: 'approvals' })
 export class AcademicStudentFinalAssignmentTransactionApprovalEntity extends MasterEntity {
@@ -21,6 +22,11 @@ export class AcademicStudentFinalAssignmentTransactionApprovalEntity extends Mas
     @IsNotEmpty()
     @IsUUID()
     type_id: string;
+
+    @Column({ name: 'approval_type_id', type: 'uuid' })
+    @IsNotEmpty()
+    @IsUUID()
+    approval_type_id: string;
 
     @ManyToOne(
         () => AcademicStudentFinalAssignmentTransactionPrerequisiteEntity,
@@ -42,4 +48,11 @@ export class AcademicStudentFinalAssignmentTransactionApprovalEntity extends Mas
     )
     @JoinColumn({ name: 'type_id' })
     type: AcademicStudentFinalAssignmentReferenceTypeEntity;
+
+    @ManyToOne(
+        () => AcademicStudentFinalAssignmentReferenceApprovalTypeEntity,
+        (approval_type: AcademicStudentFinalAssignmentReferenceApprovalTypeEntity) => approval_type.approvals,
+    )
+    @JoinColumn({ name: 'approval_type_id' })
+    approval_type: AcademicStudentFinalAssignmentReferenceApprovalTypeEntity;
 }
