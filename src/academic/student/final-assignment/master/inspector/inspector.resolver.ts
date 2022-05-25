@@ -129,5 +129,13 @@ module.exports = {
             await query.softDelete().from(ModelEntity).where(`${model_table_name}.id = :id`, { id }).execute();
             return data;
         },
+    },
+    AcademicStudentFinalAssignmentMasterInspector: {
+        unit (inspector: any) {
+            return { __typename: "InstitutionMasterUnit",id : inspector.unit_id }
+        },
+        staff (inspector: any) {
+            return { __typename: "InstitutionMasterStaff",id : inspector.staff_id }
+        },
     }
 }
