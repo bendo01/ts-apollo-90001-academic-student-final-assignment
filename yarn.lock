@@ -1138,9 +1138,9 @@ dir-glob@^3.0.1:
     path-type "^4.0.0"
 
 docxtemplater@^3.29.5:
-  version "3.29.5"
-  resolved "https://registry.yarnpkg.com/docxtemplater/-/docxtemplater-3.29.5.tgz#6a6b645bbd6319061c9190441b4d30316f9e9790"
-  integrity sha512-UJ/q5j0tDo0WC3NXRg2nFKfjHdg2rjjr6QmOFyN54YO23YripjG4yrKIjrwM8iRWkaz3Itj38SapiyZdJ2hNvA==
+  version "3.30.0"
+  resolved "https://registry.yarnpkg.com/docxtemplater/-/docxtemplater-3.30.0.tgz#308f1082e7e29ebf511e8c16a6f1acb36fa03634"
+  integrity sha512-TfC58SQxarKLdOhQ8u0Mgq07DUXbik7igW+tAeDstwDz5nepd+IDIRU8C4fsIGIiKqgaFXv1wE3ZyUXbiZNrrQ==
   dependencies:
     "@xmldom/xmldom" "^0.8.2"
 
@@ -2897,9 +2897,9 @@ xmlbuilder@~11.0.0:
   integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
 
 xss@^1.0.8:
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/xss/-/xss-1.0.12.tgz#623ca33102853a2fc5cb1d10542b492dd0296a73"
-  integrity sha512-8pXgz5BUUfKMrb81tmcbvLNA97ab4d6HdoBHYF5XYHa8oarc2s64hF+oqI4FhBHVBWvEM1wHGy+vqt8kZhCaNw==
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/xss/-/xss-1.0.13.tgz#6e48f616128b39f366dfadc57411e1eb5b341c6c"
+  integrity sha512-clu7dxTm1e8Mo5fz3n/oW3UCXBfV89xZ72jM8yzo1vR/pIS0w3sgB3XV2H8Vm6zfGnHL0FzvLJPJEBhd86/z4Q==
   dependencies:
     commander "^2.20.3"
     cssfilter "0.0.10"
