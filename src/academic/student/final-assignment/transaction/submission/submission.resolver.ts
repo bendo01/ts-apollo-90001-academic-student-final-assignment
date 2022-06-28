@@ -98,6 +98,7 @@ module.exports = {
                 student_id: input.data.student_id,
                 type_id: input.data.type_id,
                 approval_type_id: input.data.approval_type_id,
+                detail_activity_id: input.data.approval_type_id,
                 is_taken: input.data.is_taken,
                 is_lock: input.data.is_lock,
             };
@@ -114,6 +115,7 @@ module.exports = {
                 student_id: input.data.student_id,
                 type_id: input.data.type_id,
                 approval_type_id: input.data.approval_type_id,
+                detail_activity_id: input.data.approval_type_id,
                 is_taken: input.data.is_taken,
                 is_lock: input.data.is_lock,
             };
@@ -136,6 +138,9 @@ module.exports = {
     AcademicStudentFinalAssignmentTransactionSubmission: {
         student (submission: any) {
             return { __typename: "AcademicStudentMasterStudent",id : submission.student_id }
+        },
+        detail_activity (submission: any) {
+            return { __typename: "AcademicStudentCampaignDetailActivity",id : submission.detail_activity_id }
         },
         async approval_type (submission: any) {
             return await AppDataSource.manager.findOneBy(AcademicStudentFinalAssignmentReferenceApprovalTypeEntity, { id: submission.approval_type_id });

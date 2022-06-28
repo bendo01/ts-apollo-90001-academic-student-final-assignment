@@ -35,6 +35,11 @@ export class AcademicStudentFinalAssignmentTransactionSubmissionEntity extends M
     @IsUUID()
     approval_type_id: string;
 
+    @Column({ name: 'detail_activity_id', type: 'uuid' })
+    @IsNotEmpty()
+    @IsUUID()
+    detail_activity_id: string;
+
     @Column({ name: 'is_taken', type: 'timestamp', nullable:true })
     is_taken: Date;
 

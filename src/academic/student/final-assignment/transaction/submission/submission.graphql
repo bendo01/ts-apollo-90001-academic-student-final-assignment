@@ -4,6 +4,7 @@ type AcademicStudentFinalAssignmentTransactionSubmission {
     student_id: uuid!,
     type_id: uuid!,
     approval_type_id: uuid!,
+    detail_activity_id: uuid!,
     is_taken: Boolean!,
     is_lock: Boolean!,
     created_by: uuid,
@@ -18,6 +19,7 @@ input AcademicStudentFinalAssignmentTransactionSubmissionInput {
     student_id: uuid!,
     type_id: uuid!,
     approval_type_id: uuid!,
+    detail_activity_id: uuid!,
     is_taken: Boolean!,
     is_lock: Boolean!,
 }
